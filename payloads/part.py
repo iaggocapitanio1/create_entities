@@ -3,6 +3,7 @@ from .core import BasePayload
 
 # noinspection PyPep8Naming
 class PartPayload(BasePayload):
+    RELATIONAL_PROPS = ['belongsTo']
 
     def __init__(self, **kwargs):
         super(PartPayload, self).__init__(**kwargs)
@@ -21,13 +22,94 @@ class PartPayload(BasePayload):
         self.f3 = kwargs.get("f3", -1)
         self.f4 = kwargs.get("f4", -1)
         self.f5 = kwargs.get("f5", -1)
+        self.veio = kwargs.get("veio", False)
+        self.orla2 = kwargs.get("orla2", False)
+        self.orla3 = kwargs.get("orla3", False)
+        self.orla4 = kwargs.get("orla4", False)
+        self.orla5 = kwargs.get("orla5", False)
+        self.observation = kwargs.get("observation", "")
+        self.weight = kwargs.get("weight", -1)
+        self.image = kwargs.get("image", "")
+        self.belongsTo = kwargs.get("belongsTo", "")
+
+    @property
+    def belongsTo(self) -> str:
+        return self._belongsTo
+
+    @belongsTo.setter
+    def belongsT(self, belongsTo: str) -> None:
+        self.belongsTo = belongsTo
+
+    @property
+    def image(self) -> str:
+        return self._image
+
+    @image.setter
+    def image(self, image: str) -> None:
+        self._image = image
+
+    @property
+    def weight(self) -> float:
+        return self._weight
+
+    @weight.setter
+    def weight(self, weight: float) -> None:
+        self._weight = weight
+
+    @property
+    def observation(self) -> str:
+        return self._observation
+
+    @observation.setter
+    def observation(self, observation: str) -> None:
+        self._observation = observation
+
+    @property
+    def orla5(self) -> bool:
+        return self._orla5
+
+    @orla5.setter
+    def orla5(self, orla5: bool) -> None:
+        self._orla5 = orla5
+
+    @property
+    def orla4(self) -> bool:
+        return self._orla4
+
+    @orla4.setter
+    def orla4(self, orla4: bool) -> None:
+        self._orla4 = orla4
+
+    @property
+    def orla3(self) -> bool:
+        return self._orla3
+
+    @orla3.setter
+    def orla3(self, orla3: bool) -> None:
+        self._orla3 = orla3
+
+    @property
+    def orla2(self) -> bool:
+        return self._orla2
+
+    @orla2.setter
+    def orla2(self, orla2: bool) -> None:
+        self._orla2 = orla2
+
+    @property
+    def veio(self) -> bool:
+        return self._veio
+
+    @veio.setter
+    def veio(self, veio: bool) -> None:
+        self._veio = veio
 
     @property
     def f5(self) -> int:
         return self._f5
 
     @f5.setter
-    def f2(self, f5) -> None:
+    def f5(self, f5: int) -> None:
         self._f5 = f5
 
     @property
@@ -35,7 +117,7 @@ class PartPayload(BasePayload):
         return self._f4
 
     @f4.setter
-    def f4(self, f4) -> None:
+    def f4(self, f4: int) -> None:
         self._f4 = f4
 
     @property
@@ -43,7 +125,7 @@ class PartPayload(BasePayload):
         return self._f3
 
     @f3.setter
-    def f3(self, f3) -> None:
+    def f3(self, f3: int) -> None:
         self._f3 = f3
 
     @property
@@ -51,7 +133,7 @@ class PartPayload(BasePayload):
         return self._f2
 
     @f2.setter
-    def f2(self, f2) -> None:
+    def f2(self, f2: int) -> None:
         self._f2 = f2
 
     @property
