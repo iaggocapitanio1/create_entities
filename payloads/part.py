@@ -22,7 +22,7 @@ class PartPayload(BasePayload):
         self.f3 = kwargs.get("f3", -1)
         self.f4 = kwargs.get("f4", -1)
         self.f5 = kwargs.get("f5", -1)
-        self.veio = kwargs.get("veio", False)
+        self.veio = kwargs.get("veio", "Y")
         self.orla2 = kwargs.get("orla2", False)
         self.orla3 = kwargs.get("orla3", False)
         self.orla4 = kwargs.get("orla4", False)
@@ -37,8 +37,8 @@ class PartPayload(BasePayload):
         return self._belongsTo
 
     @belongsTo.setter
-    def belongsT(self, belongsTo: str) -> None:
-        self.belongsTo = belongsTo
+    def belongsTo(self, belongsTo: str) -> None:
+        self._belongsTo = belongsTo
 
     @property
     def image(self) -> str:
@@ -97,11 +97,11 @@ class PartPayload(BasePayload):
         self._orla2 = orla2
 
     @property
-    def veio(self) -> bool:
+    def veio(self) -> str:
         return self._veio
 
     @veio.setter
-    def veio(self, veio: bool) -> None:
+    def veio(self, veio: str) -> None:
         self._veio = veio
 
     @property
