@@ -7,6 +7,7 @@ class BudgetPayload(BasePayload):
 
     def __init__(self, **kwargs):
         super(BudgetPayload, self).__init__(**kwargs)
+        self.type = kwargs.get('type', 'Budget')
         self.name = kwargs.get('name', '')
         self.amount = kwargs.get('amount', -1)
         self.approvedDate = kwargs.get('approvedDate', '')

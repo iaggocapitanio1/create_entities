@@ -1,36 +1,20 @@
 from .core import BasePayload
-from enum import Enum
 
 
 # noinspection PyPep8Naming
 class MachinePayload(BasePayload):
-    RELATIONAL_PROPS = ['belongsTo', 'executedBy', 'executedIn']
-
-    class Status(Enum):
-        WAITING = 0
-        ACTIVE = 1
-        FINISHED = 2
-
-    class Type(Enum):
-        RECEIVING = 'receiving_material'
-        ORGANIZING = 'organizing_material'
-        MACHINE = 'assembly'
-        SHIPPING = 'shipping'
-        CNC1 = 'cnc1'
-        NESTING1 = 'nesting1'
-        MANUALCUT1 = 'manualcut1'
+    RELATIONAL_PROPS = ['belongsTo']
 
     def __init__(self, **kwargs):
         super(MachinePayload, self).__init__(**kwargs)
         self.startTime = kwargs.get('startTime', '')
-        self.finishTime = kwargs.get('finishTime', '')
-        self.machineStatus = kwargs.get('machineStatus', 0)
+        self.finishTime = kwargs.get('finishTime', -1)
+        self.machineStatus = kwargs.get('machineStatus', '')
         self.belongsTo = kwargs.get('belongsTo', '')
-        self.image = kwargs.get('image', '')
-        self.type = kwargs.get('type', 'Machine')
+        self.image = kwargs.get('type', 'Machine')
+        self.machineType = kwargs.get('type', 'Machine')
         self.executedIn = kwargs.get('executedIn', '')
         self.executedBy = kwargs.get('executedBy', '')
-        self.machineType = kwargs.get('machineType', '')
 
     @property
     def startTime(self) -> str:
@@ -49,11 +33,11 @@ class MachinePayload(BasePayload):
         self._finishTime = finishTime
 
     @property
-    def machineStatus(self) -> int:
+    def machineStatus(self) -> str:
         return self._machineStatus
 
     @machineStatus.setter
-    def machineStatus(self, machineStatus: int) -> None:
+    def machineStatus(self, machineStatus: str) -> None:
         self._machineStatus = machineStatus
 
     @property
@@ -73,11 +57,11 @@ class MachinePayload(BasePayload):
         self._machineType = machineType
 
     @property
-    def executedBy(self) -> str:
+    def executedBy(self) -> float:
         return self._executedBy
 
     @executedBy.setter
-    def executedBy(self, executedBy: str) -> None:
+    def executedBy(self, executedBy: float) -> None:
         self._executedBy = executedBy
 
     @property
