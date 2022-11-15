@@ -2,72 +2,69 @@ from .core import BasePayload
 
 
 # noinspection PyPep8Naming
-class MachinePayload(BasePayload):
-    RELATIONAL_PROPS = ['belongsTo']
-
+class PersonPayload(BasePayload):
     def __init__(self, **kwargs):
-        super(MachinePayload, self).__init__(**kwargs)
-        self.startTime = kwargs.get('startTime', '')
-        self.finishTime = kwargs.get('finishTime', -1)
-        self.machineStatus = kwargs.get('machineStatus', '')
-        self.belongsTo = kwargs.get('belongsTo', '')
+        super(PersonPayload, self).__init__(**kwargs)
+        self.givenName = kwargs.get('givenName', '')
+        self.familyName = kwargs.get('familyName', '')
+        self.email = kwargs.get('email', '')
         self.image = kwargs.get('type', 'Machine')
-        self.machineType = kwargs.get('type', 'Machine')
-        self.executedIn = kwargs.get('executedIn', '')
-        self.executedBy = kwargs.get('executedBy', '')
+        self.password = kwargs.get('type', 'Machine')
+        self.ssnId = kwargs.get('ssnId', '')
+        self.taxId = kwargs.get('taxId', '')
+        self.active = kwargs.get('active', False)
+    @property
+    def givenName(self) -> str:
+        return self._givenName
+
+    @givenName.setter
+    def givenName(self, givenName: str) -> None:
+        self._givenName = givenName
 
     @property
-    def startTime(self) -> str:
-        return self._startTime
+    def familyName(self) -> str:
+        return self._familyName
 
-    @startTime.setter
-    def startTime(self, startTime: str) -> None:
-        self._startTime = startTime
-
-    @property
-    def finishTime(self) -> float:
-        return self._finishTime
-
-    @finishTime.setter
-    def finishTime(self, finishTime: float) -> None:
-        self._finishTime = finishTime
+    @familyName.setter
+    def familyName(self, familyName: str) -> None:
+        self._familyName = familyName
 
     @property
-    def machineStatus(self) -> str:
-        return self._machineStatus
+    def email(self) -> str:
+        return self._email
 
-    @machineStatus.setter
-    def machineStatus(self, machineStatus: str) -> None:
-        self._machineStatus = machineStatus
-
-    @property
-    def belongsTo(self) -> str:
-        return self._belongsTo
-
-    @belongsTo.setter
-    def belongsTo(self, belongsTo: str) -> None:
-        self._belongsTo = belongsTo
+    @email.setter
+    def email(self, email: str) -> None:
+        self._email = email
 
     @property
-    def machineType(self) -> str:
-        return self._machineType
+    def password(self) -> str:
+        return self._password
 
-    @machineType.setter
-    def machineType(self, machineType: str) -> None:
-        self._machineType = machineType
-
-    @property
-    def executedBy(self) -> float:
-        return self._executedBy
-
-    @executedBy.setter
-    def executedBy(self, executedBy: float) -> None:
-        self._executedBy = executedBy
+    @password.setter
+    def password(self, password: str) -> None:
+        self._password = password
 
     @property
-    def executedIn(self) -> str:
-        return self._executedIn
+    def taxId(self) -> float:
+        return self._taxId
 
-    @executedIn.setter
-    def executedIn(self, executedIn: str) -> None:
-        self._executedIn = executedIn
+    @taxId.setter
+    def taxId(self, taxId: float) -> None:
+        self._taxId = taxId
+
+    @property
+    def ssnId(self) -> str:
+        return self._ssnId
+
+    @ssnId.setter
+    def ssnId(self, ssnId: str) -> None:
+        self._ssnId = ssnId
+
+    @property
+    def active(self) -> bool:
+        return self._active
+
+    @active.setter
+    def active(self, active: bool) -> None:
+        self._active = active
