@@ -5,6 +5,7 @@ class OrganizationPayload(EntitiesPayload):
 
     def __init__(self, **kwargs):
         super(OrganizationPayload, self).__init__(**kwargs)
+        self.type = kwargs.get('type', 'Organization')
         self.legalName = kwargs.get('legalName', '')
         self.caeId = kwargs.get('caeId', '')
         self.address = kwargs.get('address', '')
