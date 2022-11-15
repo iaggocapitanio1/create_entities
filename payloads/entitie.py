@@ -7,6 +7,7 @@ class EntitiesPayload(BasePayload):
         super(EntitiesPayload, self).__init__(**kwargs)
         self.email = kwargs.get('email', '')
         self.taxId = kwargs.get('taxId', '')
+        self.ssnId = kwargs.get('ssnId', '')
 
     @property
     def email(self) -> str:
@@ -23,3 +24,11 @@ class EntitiesPayload(BasePayload):
     @taxId.setter
     def taxId(self, taxId: float) -> None:
         self._taxId = taxId
+
+    @property
+    def ssnId(self) -> str:
+        return self._ssnId
+
+    @ssnId.setter
+    def ssnId(self, ssnId: str) -> None:
+        self._ssnId = ssnId

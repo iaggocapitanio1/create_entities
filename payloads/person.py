@@ -9,7 +9,6 @@ class PersonPayload(EntitiesPayload):
         self.familyName = kwargs.get('familyName', '')
         self.image = kwargs.get('type', 'Machine')
         self.password = kwargs.get('type', 'Machine')
-        self.ssnId = kwargs.get('ssnId', '')
         self.active = kwargs.get('active', False)
 
     @property
@@ -38,13 +37,7 @@ class PersonPayload(EntitiesPayload):
 
 
 
-    @property
-    def ssnId(self) -> str:
-        return self._ssnId
 
-    @ssnId.setter
-    def ssnId(self, ssnId: str) -> None:
-        self._ssnId = ssnId
 
     @property
     def active(self) -> bool:
