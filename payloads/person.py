@@ -1,18 +1,17 @@
-from .core import BasePayload
+from .entitie import EntitiesPayload
 
 
 # noinspection PyPep8Naming
-class PersonPayload(BasePayload):
+class PersonPayload(EntitiesPayload):
     def __init__(self, **kwargs):
         super(PersonPayload, self).__init__(**kwargs)
         self.givenName = kwargs.get('givenName', '')
         self.familyName = kwargs.get('familyName', '')
-        self.email = kwargs.get('email', '')
         self.image = kwargs.get('type', 'Machine')
         self.password = kwargs.get('type', 'Machine')
         self.ssnId = kwargs.get('ssnId', '')
-        self.taxId = kwargs.get('taxId', '')
         self.active = kwargs.get('active', False)
+
     @property
     def givenName(self) -> str:
         return self._givenName
@@ -30,14 +29,6 @@ class PersonPayload(BasePayload):
         self._familyName = familyName
 
     @property
-    def email(self) -> str:
-        return self._email
-
-    @email.setter
-    def email(self, email: str) -> None:
-        self._email = email
-
-    @property
     def password(self) -> str:
         return self._password
 
@@ -45,13 +36,7 @@ class PersonPayload(BasePayload):
     def password(self, password: str) -> None:
         self._password = password
 
-    @property
-    def taxId(self) -> float:
-        return self._taxId
 
-    @taxId.setter
-    def taxId(self, taxId: float) -> None:
-        self._taxId = taxId
 
     @property
     def ssnId(self) -> str:
