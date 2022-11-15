@@ -11,6 +11,7 @@ class BudgetPayload(BasePayload):
         self.amount = kwargs.get('amount', -1)
         self.approvedDate = kwargs.get('approvedDate', '')
         self.belongsTo = kwargs.get('belongsTo', '')
+        self.image = kwargs.get('image', '')
 
     @property
     def name(self) -> str:

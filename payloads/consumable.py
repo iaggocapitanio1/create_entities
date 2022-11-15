@@ -1,16 +1,24 @@
 from .core import BasePayload
+from enum import Enum
 
 
 # noinspection PyPep8Naming
 class ConsumablePayload(BasePayload):
     RELATIONAL_PROPS = ['belongsTo']
 
+    class Status(Enum):
+        WAITING_ORDER = 0
+        PREPARING = 1
+        AVAILABLE = 2
+        CAUGHT = 3
+
     def __init__(self, **kwargs):
         super(ConsumablePayload, self).__init__(**kwargs)
         self.name = kwargs.get('name', '')
         self.amount = kwargs.get('amount', -1)
-        self.status = kwargs.get('status', '')
+        self.status = kwargs.get('status', 0)
         self.belongsTo = kwargs.get('belongsTo', '')
+        self.image = kwargs.get('image', '')
 
     @property
     def name(self) -> str:
